@@ -5,3 +5,4 @@ bcrypt
 numpy
 flask-limiter
 flask-talisman
+gunicorn
