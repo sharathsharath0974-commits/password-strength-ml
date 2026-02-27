@@ -1,0 +1,7 @@
+flask
+scikit-learn
+joblib
+bcrypt
+numpy
+flask-limiter
+flask-talisman

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="card">
+<h2>Login</h2>
+<p class="error">{{ message }}</p>
+<form method="POST">
+<input name="email" type="email" placeholder="Email" required>
+<input name="password" type="password" placeholder="Password" required>
+<button>Login</button>
+</form>
+<a href="/register">Register</a>
+</div>
+</body>
+</html>

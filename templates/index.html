@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Security Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function updateBar(val) {
+            let bar = document.getElementById("bar");
+            let width = Math.min(val.length * 10, 100);
+            bar.style.width = width + "%";
+            bar.style.background = width < 40 ? "red" : width < 70 ? "orange" : "lime";
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>🔐 Password Security Analyzer</h2>
+
+        <form method="POST">
+            <input type="password" name="password"
+                   placeholder="Enter password"
+                   oninput="updateBar(this.value)" required>
+
+            <div class="progress">
+                <div id="bar"></div>
+            </div>
+
+            <button type="submit">Analyze Password</button>
+        </form>
+
+        {% if strength %}
+        <div class="result" style="color: {{ color }}">
+            <p><b>Strength:</b> {{ strength }}</p>
+            <p><b>Entropy:</b> {{ entropy }} bits</p>
+            <p><b>Risk Score:</b> {{ risk }} / 100</p>
+            <p>{{ note }}</p>
+            <p><b>Breach Status:</b> {{ breach }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

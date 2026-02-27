@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="card">
+<h2>Welcome {{ user }}</h2>
+
+<form method="POST">
+<input name="password" type="password" placeholder="Test password" required>
+<button>Check Strength</button>
+</form>
+
+{% if result %}
+<h3>Password Strength: {{ result }}</h3>
+{% endif %}
+
+<canvas id="chart"></canvas>
+<a href="/logout">Logout</a>
+</div>
+
+<script>
+new Chart(document.getElementById("chart"), {
+    type: "pie",
+    data: {
+        labels: ["Weak", "Strong"],
+        datasets: [{
+            data: [
+                {{ 1 if result == "Weak" else 0 }},
+                {{ 1 if result == "Strong" else 0 }}
+            ],
+            backgroundColor: ["#e74c3c", "#2ecc71"]
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
